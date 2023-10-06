@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="googlebot" content="noarchive">
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta name="author" content="Liandri Marcos">
+    <meta name="keywords" content="Países, Informações, Capital, Moedas, API"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Rest Countries API</title>
+  </head>
+  <body>
+    <div class="body">
+    <div class="logo">
+      <a href="index.html" class="text-logo">Rest<span class="span-logo">Countries</span></a>
+      <div class="word">
+        <img class="img-word" alt="planeta Terra" src="img/fotor_2023-10-4_18_54_16-fotor-20231004185451.png">
+      </div> <!--word-->
+    </div> <!--logo-->
+    <div class="container">
+        <div class="search-wrapper">
+          <input type="text" id="country-inp" placeholder="Enter a country here..."/>
+          <button id="search-btn">
+            <img alt="lupa azul claro" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAsxJREFUaEPtmF1u4jAQx8fAJaAv9B6NCidpeWikPUXbU1RKH0pPUlbpPTYvhUsAXk2Io8QZxx7baMOKSH2qsec3H/+xR8CFf+LC7YcrwL+OYFAEFm+7+X5yfBBSLABgXv0VFVQBIAspRp/fT9PNuUDZAA2jXxhGFVLI9WQ/+tz8mipAxs/NS1kAd+8/z0IKjuH6ySXI99PNaxTrAdyKGL1+GMsPAMBUifEV44NYxoiGNQKV8X8MVpceBRj9nuyhQINwPa7dT2Au5PEBoK6PTjRiQPQCVMZ/VcXZNMA5FRo180jtEwrRC5BkWzReT5tNns6W3DzqKf4iT2e33P3UeiMAXbBynac3K9/DzBD++xoBkmwrNUO9PK/DntLy+AwgMKXU513UJECS/XxoB0CezqwF7xoZurb8omAA0L0vVnk6Xbsa6LIuyXaPAKU011HwqYUOALFxVO8ra6neIoVYcq8dBICePn6hdYlCVyj4ZxEAunTGTx8Fd/e+WwgpUarVxxYKCgC7btlN8RsfxG2Mlk9FhOjy7J5AAbTkM6b60JIqm9eUywJAIL3fcB32X6ZQ6/7jI20uCnTyfqcXhBdxDGlzBwiX7E4KEdLGLix3gG1L8QD4kt0BoB8w/I1tELE6vutlLnoUkkz3Pr8Lo5NIADoKfgdQkaAeSr4Ns+c90FEIkEK+hE4UqKt6yL5GgJ5JBFvqVBQMT9Sg9Dz7ox6Nt8yTnAcEVDpaX1k9kwncD8eHGxwfUmMVgOO94yDMG8IKgFZaIGyKSf0fx4v1jbda4AXhBKAgqkFuyGixFgKqD2BEuaNHZ4DmU9ADhBzuxoBgA7RB6vGhGq2rtCgn0Grs2PfODYXwBvBJfNNvQiAGAWC4WpcqZ6uJwQD0Q4iVKQ0HBUBD9N/BBgfQhrBfIAcJcLp+7BYuU7rBAriq3BXA1VPnWneNwLk867rvxUfgLxuR8UAL+rlEAAAAAElFTkSuQmCC"/>
+          </button>
+        </div>
+      <div id="result"></div>
+    </div> <!--container-->
+    <br><br>
+      
+    <main></main>
+  <br><br><br>
+</div> <!--body-->
+      <footer>
+        <div id="footer_content">
+          <div id="footer_contatos">
+            <h2>API</h2>
+            <p>Rest Countries API.</p>
+
+            <div id="footer_social">
+
+              <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+                <img alt="instagram" class="instagram-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAypJREFUaEPtWTtuFEEQfXUGDgA+ATEROOcECAmckzkhAlsEZCQcABMgcQvsjIQz2JG5AHmht+pGte2u7urW7OCVdqTVeme6e+rVq78Fe37JnsuPA4D/zeCBgb1jQFUfAeDnafp+lr5HsdykDZcA+PcVv0Uk3w+dN2RCqvoewFno5PlFZyJyHt0eAqCq1PKXSU1HZbHryMJFBEgXQBL+RyEFX8AP6Sf15ctbQtP88lWaYrnvWET4DveKALguND9EcVT9ybdeFSZKnziaBqCqNJvX5oCjUSeLAsjrEhAqLV80pRPvnCYDqqpm44mIXIwK1Fqvqg8AUOvPAfwCcC4ifyrBwlWcC0BVqXkywKtL5QwwVX0D4LPZ+0lETissuL7QAmBDZpPGmvBJCD6io1bju6p+BPDW7P8pIk/4W1UZOBj9eLl+1wJg7T9kPsYRyZ6NNhsWGRoBfM1+pKovAHwzAN6JyIcEwCrwUkSOa4pqAbDRpwugMLmWRW3FeFV9CeAxgFsA30XkdwWAa8JRAM3oM5mhm+E46oMtADYCuQCcRMdy44pJqKidyjLEBVGeKyJVWZcAYIHSPGhu1eyZwNA5s3+4prEKgEqi66b+CmPVCLcWAOvo4VBbAK+ysBaAqUxdYeGOj+0cQEQIL5ZGMu29BpDifDPKrQGAkcRWjV0HNhWnrbN4e30TqtQrI05s6xzUYvzOGaike97qsnDfwmhpRr1Exupyqz31MuwqDCQWSnvelL/BUsJlbAkANkk1TWOFYq7qJ9RUqxayjhax7ejMiGbG1rHZni5RjYY6IpusTENDW8/dVF4SnvUk07QNlRvhoi2l2xF1su2m6uzNdpyW1JrwVEtpI8ZOmvpW2xadiLQYKENkt61sCTTybJGxSq0vTYlqaHo8Inh6Z5krmubbG2yRha0OKjp0HRXcyexu+MznR2ajd7KnGezynM1cvxDYY6kctfD3wxSxyqgVKk26AAyt+zleNyUwtVVOj2cspbdnKGSHGKgkK9Jt/8XUE8p7nk0tZ+V/U7vogcMAOrG7tPHq8iVH9IsCiGptyXUHAEtqc+asAwMzWltyz19kngtPgCZwRAAAAABJRU5ErkJggg=="/>
+              </a>
+              
+              <a href="https://pt-br.facebook.com/" class="footer-link" id="facebook">
+                <img alt="facebook" class="facebook-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAUZJREFUaEPtV9FVwzAMvNuk3aSdpHQSwiSFSegmZBPx1Oe8F0xIbMsUm0o/fi9VVN/pdI6JzoOd7x8O4K876B349x0QkR2AEwBdD2FV3GMAr+sbydcSMn5VQiLyDGBI2Ni5OQAi8h4YT9g/2gKQwfwErh0AQfMfKbTPcpoC8ATg0jOAtcG9Aje9Tw6UifN7enUXWhtektX/r3pBEVH9q+fHMZLcmymPCtwTwJXk0QF4BzY0sDIDbUlIRNTv1TLjWBrgKWfRPi3DXTzEAUDugbXYP4u9tgDAZK8tADDNRgsABpIvpefDQwPQ66FeFeOYXxvnv6kD6cdcHHqdXHqe1JTiDvxUvZtzwAEkCWQ7ySUUc+QzsK2aLxkuIZdQpmTidJeQS8glZGTAJWQk0F3ISKD59eodMO8os4ADyCSserp3oDqlmQU/AfbRtzG5g5qeAAAAAElFTkSuQmCC"/>
+              </a>
+              
+
+            </div> <!--footer_social-->
+
+          </div> <!--footer_contatos-->
+          <ul class="footer-list">
+
+            <li>
+              <h3>Contact</h3>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">restcountries@gmail.com</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">(51) 99875-6513</a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+            <li>
+              <h3>Useful Links</h3>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Service Terms</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">FAQ</a>
+            </li>
+
+          </ul>
+
+            </div> <!--input_group-->
+
+          </div> <!--footer_subscribe-->
+        </div> <!--footer_content-->
+
+      </footer>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
